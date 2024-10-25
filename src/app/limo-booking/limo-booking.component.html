@@ -1,0 +1,126 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-2">Booking Online Appointment</h2>
+  <h5 class="text-center mb-4 text-muted">Complete the form below and we'll contact you as soon as possible.</h5>
+  <form>
+    <!-- Pick Up Location -->
+    <div class="form-group">
+      <label for="pickupLocation">Pick Up Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="pickupLocation"
+        placeholder="Enter pickup location"
+        required
+      />
+    </div>
+    <!-- text center in bootstrap -->
+    <div class="container">
+        <div class="text-center">
+            <a href="your-link-here" style="text-decoration: none; color: inherit;">
+                <i class="fas fa-map-marker-alt" style="font-size: 24px; color: #E8AF44;"></i>
+                <span class="ml-2">Add Stop</span>
+            </a>
+        </div>
+    </div>
+    
+    
+
+    <!-- Drop Off Location -->
+    <div class="form-group">
+      <label for="dropoffLocation">Drop Off Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="dropoffLocation"
+        placeholder="Enter drop off location"
+        required
+      />
+    </div>
+
+    <!-- Date of Service and Pick Up Time (next to each other) -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="dateOfService">Date of Service</label>
+        <input type="date" class="form-control" id="dateOfService" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="pickupTime">Pick Up Time</label>
+        <input type="time" class="form-control" id="pickupTime" required />
+      </div>
+    </div>
+
+    <!-- Name of Passenger and Email Address (next to each other) -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="passengerName">Name of Passenger</label>
+        <input
+          type="text"
+          class="form-control"
+          id="passengerName"
+          placeholder="Enter passenger name"
+          required
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter email address"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- Phone Number and Vehicle Type (next to each other) -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phone"
+          placeholder="Enter phone number"
+          required
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="vehicleType">Vehicle Type</label>
+        <select id="vehicleType" class="form-control" required>
+          <option selected disabled>Select a vehicle type</option>
+          <option>Sedan</option>
+          <option>SUV</option>
+          <option>Van</option>
+          <option>Limousine</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Round Trip and ASAP options in one column -->
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="roundTrip" />
+        <label class="form-check-label" for="roundTrip">Round Trip</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="asap" />
+        <label class="form-check-label" for="asap">ASAP</label>
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea
+        class="form-control"
+        id="message"
+        rows="3"
+        placeholder="Enter additional details"
+      ></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Get My Quote</button>
+  </form>
+</div>

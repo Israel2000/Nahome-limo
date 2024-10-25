@@ -1,0 +1,16 @@
+button {
+    border: 1px solid #DA9100;
+    background-color: white;
+    color: black;
+}
+
+input, select, textarea {
+    border: 1px solid #DA9100;
+
+}
+
+button:hover {
+    background-color: #DA9100;
+    color: #000;
+    border: none;
+}
