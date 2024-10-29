@@ -1,0 +1,48 @@
+.social-media a {
+    margin-right: 15px; /* Space between social media icons */
+    font-size: 24px; /* Size of the icons */
+}
+
+.social-media a:hover {
+    color: #E8AF44; /* Change color on hover */
+}
+
+.footer {
+    padding: 20px 0;
+}
+
+.social-media a {
+    margin-right: 35px; /* Space between social media links */
+}
+
+.map-overlay {
+    position: relative; /* To allow for better control of the map iframe */
+    height: 200px; /* Set the height of the map */
+    overflow: hidden; /* Hide overflow */
+    border-radius: 5px; /* Optional: Round corners */
+}
+
+.map-overlay iframe {
+    position: absolute; /* Positioning the iframe absolutely */
+    top: 0; 
+    left: 0;
+    width: 100%; /* Make iframe full width */
+    height: 100%; /* Make iframe full height */
+    border: 0; /* Remove border */
+}
+
+h5 {
+    position: relative; /* Create positioning context for the pseudo-element */
+    display: inline-block; /* Allow margins to be applied */
+    margin: 20px 0; /* Space around the heading */
+}
+
+h5::after {
+    content: ""; /* Empty content for the pseudo-element */
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px; /* Adjust this value for space between text and underline */
+    height: 2px; /* Thickness of the underline */
+    background-color: #E8AF44; /* Color of the underline */
+}

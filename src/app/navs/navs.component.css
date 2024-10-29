@@ -1,0 +1,26 @@
+/* styles.css */
+
+.navbar-nav .nav-item .nav-link {
+    margin-right: 10px; /* Adds space between links */
+  }
+  
+  .btn-primary {
+    background-color: #DA9100; /* Customize button color */
+    border: none;
+    border-radius: 0px;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    text-transform: uppercase;
+    color: aliceblue!important;
+    font-size: 13px!important;
+  }
+
+  .navbar-light .navbar-nav .nav-link:hover {
+    color: #DA9100!important;
+  }
+
+  .bg-light {
+    background-color: #363636 !important;
+    height: 100px;
+  }
