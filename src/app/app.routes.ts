@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactPageComponent } from './contact-page/contact-page.component'; // Ensure this path is correct
-import { AppComponent } from './app.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
+// import { AppComponent } from './app.component';
+import { NamhomeHomeComponent } from './namhome-home/namhome-home.component';
 
-const routes: Routes = [
-  { path: 'contact', component: ContactPageComponent },
-  { path: '', component: AppComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard route
+export const routes: Routes = [
+  { path: '', component: NamhomeHomeComponent },  // Home route
+  { path: 'contact', component: ContactPageComponent },  // Contact route
+  { path: '**', redirectTo: '', pathMatch: 'full' }  // Wildcard redirect
 ];
 
 @NgModule({
