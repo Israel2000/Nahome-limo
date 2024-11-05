@@ -1,5 +1,5 @@
 .container-fluid.album {
-    background-color: #c7c7c7; /* Set background color */
+    background-color: #3e3e3e; /* Set background color */
     width: 100%; /* Set width to 100% */
     padding: 20px; /* Optional: Add padding for spacing */
     display: flex; /* Enable flexbox */
@@ -21,16 +21,28 @@
 }
 
 .bg-light {
-  background-color: #000!important;
+  background-color: #212529!important;
   color: white;
 }
+p.mb-4.h3 {
+  color: #DA9100!important;
+}
 .btn-primary{
-  background-color: #000!important;
+  background-color: #ffffff!important;
+  color: #3e3e3e;
+  border: none;
 }
 .btn-primary:hover {
   background-color: #ffffff!important;
   color: rgb(0, 0, 0)!important;
   border: none;
+}
+
+.text-primary {
+  color: #DA9100!important;
+}
+.h5 {
+  margin-left: 10px;
 }
 /* service */
 .service-screen {

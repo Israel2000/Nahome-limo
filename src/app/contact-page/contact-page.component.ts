@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavsComponent } from "../navs/navs.component";
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-contact-page',
   standalone: true,
-  imports: [NavsComponent],
+  imports: [FooterComponent],
   templateUrl: './contact-page.component.html',
   styleUrl: './contact-page.component.css'
 })

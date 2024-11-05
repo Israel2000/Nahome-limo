@@ -5,9 +5,9 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { NamhomeHomeComponent } from './namhome-home/namhome-home.component';
 
 export const routes: Routes = [
-  { path: '', component: NamhomeHomeComponent },  // Home route
+  { path: 'home', component: NamhomeHomeComponent },  // Home route
   { path: 'contact', component: ContactPageComponent },  // Contact route
-  { path: '**', redirectTo: '', pathMatch: 'full' }  // Wildcard redirect
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }  // Wildcard redirect
 ];
 
 @NgModule({

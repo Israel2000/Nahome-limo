@@ -1,0 +1,30 @@
+/* styles.css */
+.navbar-brand {
+    color: white;
+}
+.navbar-nav .nav-item .nav-link {
+    margin-right: 10px; /* Adds space between links */
+  }
+  
+  .btn-primary {
+    background-color: #f0f0f0; /* Customize button color */
+    border: none;
+    /* shadow */
+    box-shadow: 0px 0px 10px rgba(226, 226, 226, 0.2)!important;
+    color: #000000;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    text-transform: uppercase;
+    color: rgb(255, 255, 255)!important;
+    font-size: 16px!important;
+  }
+
+  .navbar-light .navbar-nav .nav-link:hover {
+    color: #DA9100!important;
+  }
+
+  .bg-light {
+    background-color: #212529 !important;
+    height: 100px;
+  }

@@ -4,3 +4,7 @@
     background-color: #E8AF44;
     padding: 20px;
 }
+
+.btn.btn-primary {
+    background-color: #DA9100;
+}
