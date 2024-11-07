@@ -1,126 +1,104 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-2">Booking Online Appointment</h2>
-  <h5 class="text-center mb-4 text-muted">Complete the form below and we'll contact you as soon as possible.</h5>
+<div class="hero text-center text-white d-flex align-items-center justify-content-center" style="background-color: #343a40; height: 300px;">
+  <div>
+      <h1 class="display-4 font-weight-bold">Welcome to <span class="highlight">Nahome Limo Services</span></h1>
+      <p class="lead">Your Premium Transportation Choice</p>
+  </div>
+</div>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Order Pick up and Drop off</h2>
+  
   <form>
-    <!-- Pick Up Location -->
-    <div class="form-group">
-      <label for="pickupLocation">Pick Up Location</label>
-      <input
-        type="text"
-        class="form-control"
-        id="pickupLocation"
-        placeholder="Enter pickup location"
-        required
-      />
-    </div>
-    <!-- text center in bootstrap -->
-    <div class="container">
-        <div class="text-center">
-            <a href="your-link-here" style="text-decoration: none; color: inherit;">
-                <i class="fas fa-map-marker-alt" style="font-size: 24px; color: #E8AF44;"></i>
-                <span class="ml-2">Add Stop</span>
-            </a>
-        </div>
-    </div>
-    
-    
-
-    <!-- Drop Off Location -->
-    <div class="form-group">
-      <label for="dropoffLocation">Drop Off Location</label>
-      <input
-        type="text"
-        class="form-control"
-        id="dropoffLocation"
-        placeholder="Enter drop off location"
-        required
-      />
-    </div>
-
-    <!-- Date of Service and Pick Up Time (next to each other) -->
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="dateOfService">Date of Service</label>
-        <input type="date" class="form-control" id="dateOfService" required />
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="pickupLocation" class="form-label">Pick Up Location</label>
+        <input type="text" class="form-control" id="pickupLocation" placeholder="Enter pickup location" required>
       </div>
-      <div class="form-group col-md-6">
-        <label for="pickupTime">Pick Up Time</label>
-        <input type="time" class="form-control" id="pickupTime" required />
+      <div class="col-md-6">
+        <label for="dropoffLocation" class="form-label">Drop Off Location</label>
+        <input type="text" class="form-control" id="dropoffLocation" placeholder="Enter drop off location" required>
       </div>
     </div>
-
-    <!-- Name of Passenger and Email Address (next to each other) -->
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="passengerName">Name of Passenger</label>
-        <input
-          type="text"
-          class="form-control"
-          id="passengerName"
-          placeholder="Enter passenger name"
-          required
-        />
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="passengers" class="form-label">Type of Service</label>
+        <select id="passengers" class="form-select" required>
+          <option value="" disabled selected>What's occasion?</option>
+          <option value="1">Denver International Airport(DIA)</option>
+          <option value="2">Birthday</option>
+          <option value="3">Tours</option>
+          <option value="4">other</option>
+        </select>
       </div>
-      <div class="form-group col-md-6">
-        <label for="email">Email Address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="Enter email address"
-          required
-        />
+      <div class="col-md-6">
+        <label for="passengers" class="form-label">Passengers</label>
+        <select id="passengers" class="form-select" required>
+          <option value="" disabled selected>Select number of passengers</option>
+          <option value="1">1 Passenger</option>
+          <option value="2">2 Passengers</option>
+          <option value="3">3 Passengers</option>
+          <option value="4">4 Passengers</option>
+          <option value="5">5 Passengers</option>
+          <option value="6">6 Passengers</option>
+          <option value="7">7 Passengers</option>
+          <option value="8">8 Passengers</option>
+        </select>
       </div>
+      
     </div>
-
-    <!-- Phone Number and Vehicle Type (next to each other) -->
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="phone">Phone Number</label>
-        <input
-          type="tel"
-          class="form-control"
-          id="phone"
-          placeholder="Enter phone number"
-          required
-        />
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">Passenger Name</label>
+        <input type="text" class="form-control" id="firstName" placeholder="Enter full name" required>
       </div>
-      <div class="form-group col-md-6">
-        <label for="vehicleType">Vehicle Type</label>
-        <select id="vehicleType" class="form-control" required>
-          <option selected disabled>Select a vehicle type</option>
-          <option>Sedan</option>
-          <option>SUV</option>
-          <option>Van</option>
-          <option>Limousine</option>
+      <div class="col-md-6">
+        <label for="passengers" class="form-label">Type of Vehicle</label>
+        <select id="passengers" class="form-select" required>
+          <option value="" disabled selected>cars option</option>
+          <option value="1">Suv Suberban - 5 seats</option>
+          <option value="2">Sedan - 3 seats</option>
         </select>
       </div>
     </div>
 
-    <!-- Round Trip and ASAP options in one column -->
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="roundTrip" />
-        <label class="form-check-label" for="roundTrip">Round Trip</label>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email address" required>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="asap" />
-        <label class="form-check-label" for="asap">ASAP</label>
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" required>
       </div>
     </div>
 
-    <!-- Message -->
-    <div class="form-group">
-      <label for="message">Message</label>
-      <textarea
-        class="form-control"
-        id="message"
-        rows="3"
-        placeholder="Enter additional details"
-      ></textarea>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="dateOfService" class="form-label">Date of Service</label>
+        <input type="date" class="form-control" id="dateOfService" required>
+      </div>
+      <div class="col-md-6">
+        <label for="pickupTime" class="form-label">Pick Up Time</label>
+        <input type="time" class="form-control" id="pickupTime" required>
+      </div>
     </div>
+      <!-- Round Trip and ASAP options in one column -->
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="roundTrip" />
+          <label class="form-check-label" for="roundTrip">Round Trip</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="asap" />
+          <label class="form-check-label" for="asap">ASAP</label>
+        </div>
+      </div>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Get My Quote</button>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary">Reserve Now</button>
+    </div>
+    
+
   </form>
 </div>

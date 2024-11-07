@@ -1,23 +1,46 @@
-
-<div class="container mt-5">
-    <h2 class="text-center">Drop us line!</h2>
-    <form>
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name"  name="name" placeholder="enter full name" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email"  name="email" placeholder="your@email.com" required>
-      </div>
-      <div class="form-group">
-        <label for="message">Message:</label>
-        <textarea class="form-control" id="message" rows="3" name="message" placeholder="Enter your questions" required></textarea>
-      </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary">Send</button>
-      </div>
-    </form>
+<div class="hero text-center text-white d-flex align-items-center justify-content-center" style="background-color: #343a40; height: 300px;">
+  <div>
+      <h1 class="display-4 font-weight-bold">We Love to Hear from you. <br/>
+        <span class="highlight"></span></h1>
+      <p class="lead" style="color: #E8AF44;">Nahome Limo Service</p>
   </div>
-  
+</div>
+
+<div class="container">
+  <h2 class="text-center">Drop us a Line!</h2>
+  <div class="row">
+      
+      <!-- Left Column: Contact Information -->
+      <div class="col-md-6 mb-4">
+          <h4>Contact Information</h4>
+          <p><strong>Address:</strong> 1234 Limo Lane, Suite 100, City, State, ZIP</p>
+          <p><strong>Phone:</strong> (123) 456-7890</p>
+          <!-- <p><strong>Email:</strong> info@limotransport.com</p> -->
+          <p>Our team is available 24/7 to help with any questions, concerns, or special requests you may have.</p>
+      </div>
+      
+      <!-- Right Column: Contact Form -->
+      <div class="col-md-6">
+          <form>
+              <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter full name" required>
+              </div>
+              <div class="form-group mt-2">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="your@email.com" required>
+              </div>
+              <div class="form-group mt-2">
+                  <label for="message">Message:</label>
+                  <textarea class="form-control" id="message" rows="3" name="message" placeholder="Enter your questions" required></textarea>
+              </div>
+              <div class="text-center mt-3">
+                  <button type="submit" class="btn btn-primary w-100">Send</button>
+              </div>
+          </form>
+      </div>
+
+  </div>
+</div>
+
 <app-footer></app-footer>

@@ -1,5 +1,5 @@
 .container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
     background-color: #E8AF44;
     padding: 20px;
@@ -7,4 +7,10 @@
 
 .btn.btn-primary {
     background-color: #DA9100;
+    border: none
+}
+
+.btn.btn-primary:hover {
+    background-color: #E8AF44;
+    border: none
 }

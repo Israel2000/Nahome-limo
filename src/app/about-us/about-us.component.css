@@ -1,0 +1,29 @@
+
+        /* Custom styling for section headers */
+        .section-header {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .highlight {
+            color: #E8AF44; /* Highlight color for business name or key points */
+        }
+        .service-icons i {
+            font-size: 2.5rem;
+            color: #E8AF44;
+        }
+
+        .blockquote-footer {
+            margin-top: 0.2rem;
+        }
+        /* Responsive adjustments for better mobile display */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+            .section-header {
+                font-size: 1.25rem;
+            }
+        }
+    
