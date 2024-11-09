@@ -1,12 +1,13 @@
 .container {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 10px auto;
     background-color: #E8AF44;
     padding: 20px;
+    border:27px solid #ffcb68 !important;
 }
 
 .btn.btn-primary {
-    background-color: #DA9100;
+    background-color: #000000;
     border: none
 }
 
