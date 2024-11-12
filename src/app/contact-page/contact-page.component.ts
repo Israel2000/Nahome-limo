@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from "../footer/footer.component";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-page',
   standalone: true,
-  imports: [FooterComponent, ReactiveFormsModule],
+  imports: [FooterComponent, ReactiveFormsModule, HttpClientModule], // Import HttpClientModule here
   templateUrl: './contact-page.component.html',
-  styleUrl: './contact-page.component.css'
+  styleUrls: ['./contact-page.component.css'] // Corrected typo here
 })
 export class ContactPageComponent {
-contactForm: FormGroup;
+  contactForm: FormGroup;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.contactForm = this.fb.group({
