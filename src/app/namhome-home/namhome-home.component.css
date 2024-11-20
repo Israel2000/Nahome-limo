@@ -123,6 +123,10 @@ p.mb-4.h3 {
     height: 50%;
     margin: 0 0 16px 0;
   }
+
+  .card-body {
+    border: 4px solid black!important;
+  }
   
   @media (max-width: 1024px) {
     .album .img {
