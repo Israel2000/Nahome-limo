@@ -1,33 +1,39 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from "../footer/footer.component";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import emailjs from '@emailjs/browser';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-contact-page',
   standalone: true,
-  imports: [FooterComponent, ReactiveFormsModule, HttpClientModule], // Import HttpClientModule here
+  imports: [FooterComponent, ReactiveFormsModule, JsonPipe], // Import HttpClientModule here
   templateUrl: './contact-page.component.html',
   styleUrls: ['./contact-page.component.css'] // Corrected typo here
 })
 export class ContactPageComponent {
-  contactForm: FormGroup;
+  form: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required],
+  constructor(private fb: FormBuilder) {
+    // Initialize the form inside the constructor
+    this.form = this.fb.group({
+      from_name: '',
+      to_name: 'admin',
+      from_email: '',
+      from_message: ''
     });
   }
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      this.http.post('/api/send-email', this.contactForm.value)
-        .subscribe({
-          next: (res) => console.log('Email sent successfully', res),
-          error: (err) => console.error('Error sending email', err),
-        });
-    }
+  async send() {
+    emailjs.init('6By1enMFeieSwMnOW');
+    let response = await emailjs.send("service_2351vj5", "template_qrwqide", {
+      from_name: this.form.value.from_name,
+      to_name: this.form.value.to_name,
+      from_email: this.form.value.from_email,
+      message: this.form.value.from_message,
+    });
+
+    alert('Message has been sent.');
+    this.form.reset()
   }
 }

@@ -6,23 +6,22 @@
   </div>
 </div>
 
-<div class="container">
+<div [formGroup]="form" class="container">
   <h2 class="text-center">Drop us a Line!</h2>
-  <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+  <form action="javascript:void(0)" (submit)="send()">
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter full name" required>
+      <input formControlName="from_name" id="name"  class="form-control" placeholder="Enter full name" required>
     </div>
     <div class="form-group mt-2">
       <label for="email">Email:</label>
-      <input type="email" id="email" formControlName="email" class="form-control" placeholder="your@email.com" required>
+      <input formControlName="from_email" type="email" id="email"  class="form-control" placeholder="your@email.com" required>
     </div>
     <div class="form-group mt-2">
       <label for="message">Message:</label>
-      <textarea id="message" formControlName="message" rows="3" class="form-control" placeholder="Enter your questions" required></textarea>
+      <textarea formControlName="from_message" id="message" rows="3" class="form-control" placeholder="Enter your questions" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary w-100 mt-3">Send</button>
   </form>
 </div>
-
 <app-footer></app-footer>
