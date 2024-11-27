@@ -15,7 +15,9 @@
     "@angular/common": "^18.2.0",
     "@angular/compiler": "^18.2.0",
     "@angular/core": "^18.2.0",
+    "@angular/fire": "^18.0.1",
     "@angular/forms": "^18.2.0",
+    "@angular/material": "^19.0.0",
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
@@ -24,6 +26,7 @@
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "firebase": "^10.14.1",
     "nodemailer": "^6.9.16",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -41,5 +44,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.5.2"
-  }
+  },
+  "styles": [
+    "src/styles.css",
+    "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+  ]
 }
