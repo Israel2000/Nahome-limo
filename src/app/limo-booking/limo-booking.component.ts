@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 declare const paypal: any;
@@ -63,7 +63,7 @@ export class LimoBookingComponent {
   }
   selectPickupLocation(picklocation: string) {
     this.pickupLocation = picklocation;
-    this.filteredPickupLocations = []; 
+    this.filteredPickupLocations = [];
   }
   // Pickup Location AutoComplete End
 
@@ -331,19 +331,36 @@ export class LimoBookingComponent {
   }
 
   onSubmit(form: any): void {
-    if (form.invalid) return
-    this.showPaypalButton = true;
-    this.initializePayPalButton();
+    if (form.invalid) return;
+
+    this.showPaypalButton = true; // Make the PayPal container visible
+
+    // Delay initialization to allow the DOM to update
+    setTimeout(() => {
+      this.initializePayPalButton();
+    }, 0); // A short delay ensures DOM updates
   }
 
   initializePayPalButton(): void {
-    const script = document.createElement('script');
-    script.src = 'https://www.paypal.com/sdk/js?client-id=ARAP6tl30lFVmkYbFejTwExJHmRWve16JJTAFBfUwBkMSNJwO8N9GCHcxpU6OzcVxqtrCJtOJdkCwz4K&currency=USD&disable-funding=paylater';
-    script.onload = () => this.renderPayPalButton();
-    document.body.appendChild(script);
+    // Check if PayPal script is already loaded
+    if (!document.querySelector('script[src*="paypal.com/sdk/js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://www.paypal.com/sdk/js?client-id=ARAP6tl30lFVmkYbFejTwExJHmRWve16JJTAFBfUwBkMSNJwO8N9GCHcxpU6OzcVxqtrCJtOJdkCwz4K&currency=USD&disable-funding=paylater';
+      script.onload = () => this.renderPayPalButton();
+      document.body.appendChild(script);
+    } else {
+      this.renderPayPalButton(); // Script already loaded
+    }
   }
 
   renderPayPalButton(): void {
+    // Ensure the container exists in the DOM
+    const container = document.getElementById('paypal-button-container');
+    if (!container) {
+      console.error('PayPal container not found in the DOM.');
+      return;
+    }
+
     paypal.Buttons({
       style: {
         color: "blue",
@@ -367,6 +384,44 @@ export class LimoBookingComponent {
     }).render('#paypal-button-container');
   }
 
+
+  // onSubmit(form: any): void {
+  //   if (form.invalid) return
+  //   this.showPaypalButton = true;
+  //   this.initializePayPalButton();
+  // }
+
+  // initializePayPalButton(): void {
+  //   const script = document.createElement('script');
+  //   script.src = 'https://www.paypal.com/sdk/js?client-id=ARAP6tl30lFVmkYbFejTwExJHmRWve16JJTAFBfUwBkMSNJwO8N9GCHcxpU6OzcVxqtrCJtOJdkCwz4K&currency=USD&disable-funding=paylater';
+  //   script.onload = () => this.renderPayPalButton();
+  //   document.body.appendChild(script);
+  // }
+
+  // renderPayPalButton(): void {
+  //   paypal.Buttons({
+  //     style: {
+  //       color: "blue",
+  //       layout: 'horizontal',
+  //       height: 40
+  //     },
+  //     createOrder: (data: any, actions: { order: { create: (arg0: { purchase_units: { amount: { value: string; }; }[]; }) => any; }; }) => {
+  //       return actions.order.create({
+  //         purchase_units: [{
+  //           amount: {
+  //             value: this.totalPrice.toString()
+  //           }
+  //         }]
+  //       });
+  //     },
+  //     onApprove: (data: { orderID: string; payerID: string; }, actions: any) => {
+  //       this.paymentId = data.orderID;
+  //       this.payerId = data.payerID;
+  //       this.showPopup = true;
+  //     }
+  //   }).render('#paypal-button-container');
+  // }
+
   handleOkClick(): void {
     this.showPopup = false;
     this.sendConfirmationEmail();
@@ -376,8 +431,8 @@ export class LimoBookingComponent {
     const to = "+16197237975"
     const message = `Israel you recive a new Booking from ${this.pickupLocation} to ${this.dropoffLocation} and 
     the name of the passenger is ${this.passengerName} this is his/her contact information ${this.phone} , ${this.email} Thankyou. `
-    const smsPayload = { to, message }; 
-    
+    const smsPayload = { to, message };
+
     this.http.post(smsApiUrl, smsPayload, { headers }).subscribe(
       (response) => {
         console.log('SMS sent successfully:', response);
@@ -438,7 +493,7 @@ export class LimoBookingComponent {
     this.stops = [];
     this.address = " "
     this.firstDate = "",
-    this.lastDate = ""
+      this.lastDate = ""
   }
 
   sendConfirmationEmail(): void {
@@ -457,7 +512,7 @@ export class LimoBookingComponent {
       roundTrip: this.roundTrip,
       vehicleType: this.vehicleType,
       totalPrice: this.totalPrice,
-      stops: this.stops, 
+      stops: this.stops,
       address: this.address,
       firstDate: this.firstDate,
       lastDate: this.lastDate,
