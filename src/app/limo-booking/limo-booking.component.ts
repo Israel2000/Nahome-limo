@@ -45,8 +45,8 @@ export class LimoBookingComponent {
 
   // Pickup Location AutoComplete Start
   PickUplocations: string[] = [
-    '8500 Peña Blvd, Denver, CO 80249, USA DEN West Side Rideshare Pickup (Uber/Lyft)',
-    '9020 Peña Blvd, Denver, CO 80249, USA DEN East Side Rideshare Pickup (Uber/Lyft)',
+    '8500 Peña Blvd, Denver, CO 80249, USA DEN West Side Rideshare Pickup',
+    '9020 Peña Blvd, Denver, CO 80249, USA DEN East Side Rideshare Pickup',
     '9100 Peña Blvd, Denver, CO 80249, USA Economy Parking Lot Pickup',
     '6900 Peña Blvd, Denver, CO 80249, USA 61st & Peña RTD Rail Station (Public Transport Connection)',
     '9500 E 40th Ave, Denver, CO 80239, USA Rental Car Center Pickup',
