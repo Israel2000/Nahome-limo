@@ -11,7 +11,7 @@
   <form #bookingForm="ngForm" (ngSubmit)="onSubmit(bookingForm)" novalidate>
 
     <div class="form-group ">
-      <label for="pickupLocation">Drop Off Location</label>
+      <label for="pickupLocation">Pickup Location</label>
       <input type="text" name="pickupLocation" id="pickupLocation" class="form-control" [(ngModel)]="pickupLocation"
         (input)="filterPickupLocations()" (change)="calculatePrice()" placeholder="Enter Your PickUp Location" />
 
