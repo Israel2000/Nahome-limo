@@ -338,7 +338,7 @@ export class LimoBookingComponent {
     // Delay initialization to allow the DOM to update
     setTimeout(() => {
       this.initializePayPalButton();
-    }, 0); // A short delay ensures DOM updates
+    }, 1000); // A short delay ensures DOM updates
   }
 
   initializePayPalButton(): void {
