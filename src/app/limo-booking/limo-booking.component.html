@@ -5,25 +5,36 @@
       <!-- Pick Up Location -->
       <div class="col-md-6 mb-3">
         <label for="pickupLocation" class="form-label">Pick Up Location</label>
+
+        <select class="form-control mb-3" id="vehicleType" (change)="calculatePrice()" [(ngModel)]="pickupLocation" name="pickupLocation" required>
+          <option value="" disabled selected>Select Pickup Area</option>
+          <option value="DEN">DEN (Airport)</option>
+          <option value="Denver Downtown">Denver Downtown</option>
+          <option value="Denver">Denver</option>
+          <option value="Littleton">Littleton</option>
+          <option value="Lakewood">Lakewood</option>
+          <option value="Boulder">Boulder</option>
+          <option value="Castlerock">Castlerock</option>
+          <option value="Arvada">Arvada</option>
+          <option value="BROOMFIELD">BROOMFIELD</option>
+          <option value="Colorado Springs">Colorado Springs</option>
+        </select>
+
+        <label for="exactPickupAddress" class="form-label ">Exact Pickup Address</label>
+
         <input
           type="text"
           class="form-control"
-          id="pickupLocation"
-          name="pickupLocation"
-          placeholder="Enter pick up location"
-          [(ngModel)]="pickupLocation"
-          [value]="isDIASelected ? '1' : pickupLocation"
+          id="exactPickupAddress"
+          name="exactPickupAddress"
+          placeholder="Enter Exact Pick Up Address"
+          [(ngModel)]="exactPickupAddress"
           required
         />
 
-        <!-- Checkmark 1 (DIA Check) -->
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="check1" name="check1" [(ngModel)]="isDIASelected" (change)="onDIASelectionChange()">
-          <label class="form-check-label" for="check1">DIA 1</label>
-        </div>
 
         <!-- Select Region (Radio buttons: West or East) -->
-        <div *ngIf="isDIASelected" class="row mt-2">
+        <div *ngIf="pickupLocation === 'DEN'" class="row mt-2">
           <div class="col-md-12">
             <label class="form-label">Select Region</label>
             <div class="form-check">
@@ -55,16 +66,31 @@
       <!-- Drop Off Location -->
       <div class="col-md-6 mb-3">
         <label for="dropoffLocation" class="form-label">Drop Off Location</label>
+
+        <select class="form-control mb-3" id="vehicleType" (change)="calculatePrice()" [(ngModel)]="dropoffLocation" name="dropoffLocation" required>
+          <option value="" disabled selected>Select Drop Off Area</option>
+          <option value="DEN">DEN (Airport)</option>
+          <option value="Denver Downtown">Denver Downtown</option>
+          <option value="Denver">Denver</option>
+          <option value="Littleton">Littleton</option>
+          <option value="Lakewood">Lakewood</option>
+          <option value="Boulder">Boulder</option>
+          <option value="Castlerock">Castlerock</option>
+          <option value="Arvada">Arvada</option>
+          <option value="BROOMFIELD">BROOMFIELD</option>
+          <option value="Colorado Springs">Colorado Springs</option>
+        </select>
+
+        <label for="exactDropOffAddress" class="form-label">Exact Drop Off Address</label>
         <input
-          type="text"
-          class="form-control"
-          id="dropoffLocation"
-          name="dropoffLocation"
-          placeholder="Enter drop off location (City, State)"
-          [(ngModel)]="dropoffLocation"
-          (ngModelChange)="extractCity()" 
-          required
-        />
+        type="text"
+        class="form-control"
+        id="exactDropOffAddress"
+        name="exactDropOffAddress"
+        placeholder="Enter Exact Drop Off Address"
+        [(ngModel)]="exactDropOffAddress"
+        required
+      />
         
         <!-- Display City under Drop Off Location -->
         <div *ngIf="city" class="mt-2">
@@ -171,7 +197,7 @@
       <!-- Vehicle Type (Dropdown with Placeholder inside input) -->
       <div class="col-md-3 mb-3">
         <label for="vehicleType" class="form-label">Vehicle Type</label>
-        <select class="form-control" id="vehicleType" [(ngModel)]="vehicleType" name="vehicleType" required>
+        <select (change)="calculatePrice()" class="form-control" id="vehicleType" [(ngModel)]="vehicleType" name="vehicleType" required>
           <option value="" disabled selected>Select vehicle type</option>
           <option value="sedan">Sedan</option>
           <option value="suv">SUV</option>
@@ -239,7 +265,7 @@
     <div>
       <label for="price" class="form-label">Price</label>
         <div class="form-control-plaintext">
-          ${{ price || 'Enter price' }}
+          {{price}}
         </div>
     </div>
      

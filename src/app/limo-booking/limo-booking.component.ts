@@ -46,11 +46,14 @@ passengerCount: any;
   // passengerEmail: string = '';
   // pickupDate: string = '';
   // pickupTime: string = '';
-  price: number = 0;
+  price: number | string = 'Please select Pickup ,Drop location and Vehicle type to get the price';
   locationOption: string = ''; // 'west' or 'east'
   isDIASelected: boolean = false;
   city: string = '';  // This will hold the extracted city
   state: string = ''; // We are not using state here
+
+  exactPickupAddress = '';
+  exactDropOffAddress = '';
 
   onDIASelectionChange(): void {
     if (this.isDIASelected) {
@@ -58,6 +61,55 @@ passengerCount: any;
     } else {
       this.pickupLocation = '';
     }
+  }
+
+  calculatePrice(): void {
+    console.log(this.pickupLocation, this.dropoffLocation);
+    if(!this.pickupLocation || !this.dropoffLocation || !this.vehicleType){
+      this.price = 'Please select Pickup ,Drop location and Vehicle type to get the price';
+    }
+    this.price = this.getPrice(this.pickupLocation,this.dropoffLocation, this.vehicleType);
+  }
+
+  getPrice(pickup: string, dropOff: string, vehicleType: string): number | string {
+    const priceData: any = {
+      "DEN to Denver Downtown": { sedan: 100, suv: 125 },
+      "DEN to Denver": { sedan: 100, suv: 125 },
+      "DEN to Littleton": { sedan: 125, suv: 150 },
+      "DEN to Lakewood": { sedan: 125, suv: 150 },
+      "DEN to Boulder": { sedan: "135 + Toll $15", suv: "165 + Toll $15" },
+      "DEN to Castlerock": { sedan: "155 + Toll $15", suv: "195 + Toll $15" },
+      "DEN to Arvada": { sedan: 125, suv: 150 },
+      "DEN to BROOMFIELD": { sedan: "135 + Toll $15", suv: "155 + Toll $15" },
+      "DEN to Colorado Springs": { sedan: "225 + Toll $15", suv: "275 + Toll $15" }
+    };
+
+    // Normalize the key to handle reverse cases
+    const key = this.normalizeRoute(pickup, dropOff);
+
+    if (priceData[key]) {
+      const vehiclePrice = priceData[key][vehicleType];
+      if (vehiclePrice) {
+        return vehiclePrice;
+      } else if(!vehicleType) {
+        return `Please select Vehicle type to get the price`;
+      } else {
+        return `Vehicle type '${vehicleType}' not available for this route.`;
+      }
+    }else if(!pickup) {
+      return `Please select Pickup Location to get the price`;
+    } else if(!dropOff) {
+      return `Please select DropOff Location to get the price`;
+    }else {
+      return `Route from '${pickup}' to '${dropOff}' not found.`;
+    }
+  }
+
+  // Helper function to normalize route keys
+  normalizeRoute(location1: string, location2: string) {
+    // Sort the two locations alphabetically to ensure consistency
+    const sortedLocations = [location1, location2].sort();
+    return `${sortedLocations[0]} to ${sortedLocations[1]}`;
   }
 
   // This function extracts only the city from the dropoff location
