@@ -196,27 +196,53 @@
     
       <!-- Round Trip Checkbox -->
       <div class="col-md-3 mb-3 d-flex align-items-center">
-        <div class="form-check">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="roundTrip"
-            [(ngModel)]="isRoundTrip"
-            name="roundTrip"
-          />
-          <label for="roundTrip" class="form-check-label">Round Trip</label>
-        </div>
-      </div>
+  <div class="form-group">
+    <!-- Round Trip Checkbox -->
+    <div class="form-check">
+      <input
+        type="checkbox"
+        id="roundTrip"
+        name="roundTrip"
+        class="form-check-input"
+        [(ngModel)]="isRoundTrip"
+      />
+      <label for="roundTrip" class="form-check-label">Round Trip</label>
+    </div>
+
     
-      <!-- Price (Display with Dollar Sign) -->
+  </div>
+</div>
+
+
+    <!-- Date of Service and Pickup Time -->
+
       <div class="col-md-3 mb-3">
-        <label for="price" class="form-label">Price</label>
+        <div *ngIf="isRoundTrip" class="mt-3">
+      <label for="firstDate">Date Of Service</label>
+      <input
+        type="date"
+        id="firstDate"
+        name="firstDate"
+        class="form-control"
+      />
+      <label for="lastDate" class="mt-2">PickUp Time</label>
+      <input
+        type="time"
+        id="lastDate"
+        name="lastDate"
+        class="form-control"
+      />
+    </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="price" class="form-label">Price</label>
         <div class="form-control-plaintext">
           ${{ price || 'Enter price' }}
         </div>
-      </div>
     </div>
-    
+     
 
     <!-- Submit Button -->
     <div class="d-grid mt-3">
