@@ -72,37 +72,58 @@ passengerCount: any;
   }
 
   getPrice(pickup: string, dropOff: string, vehicleType: string): number | string {
-    const priceData: any = {
-      "DEN to Denver Downtown": { sedan: 100, suv: 125 },
-      "DEN to Denver": { sedan: 100, suv: 125 },
-      "DEN to Littleton": { sedan: 125, suv: 150 },
-      "DEN to Lakewood": { sedan: 125, suv: 150 },
-      "DEN to Boulder": { sedan: "135 + Toll $15", suv: "165 + Toll $15" },
-      "DEN to Castlerock": { sedan: "155 + Toll $15", suv: "195 + Toll $15" },
-      "DEN to Arvada": { sedan: 125, suv: 150 },
-      "DEN to BROOMFIELD": { sedan: "135 + Toll $15", suv: "155 + Toll $15" },
-      "DEN to Colorado Springs": { sedan: "225 + Toll $15", suv: "275 + Toll $15" }
-    };
-
-    // Normalize the key to handle reverse cases
-    const key = this.normalizeRoute(pickup, dropOff);
-
-    if (priceData[key]) {
-      const vehiclePrice = priceData[key][vehicleType];
-      if (vehiclePrice) {
-        return vehiclePrice;
-      } else if(!vehicleType) {
-        return `Please select Vehicle type to get the price`;
-      } else {
-        return `Vehicle type '${vehicleType}' not available for this route.`;
-      }
-    }else if(!pickup) {
+    if(!pickup) {
       return `Please select Pickup Location to get the price`;
-    } else if(!dropOff) {
+    } else if (!dropOff) {
       return `Please select DropOff Location to get the price`;
-    }else {
-      return `Route from '${pickup}' to '${dropOff}' not found.`;
     }
+    const priceMap: any = {
+      'den-denverdowntown': { sedan: 100, suv: 125 },
+      'den-denver': { sedan: 100, suv: 125 },
+      'den-littleton': { sedan: 125, suv: 150 },
+      'den-lakewood': { sedan: 125, suv: 150 },
+      'den-boulder': { sedan: 135, toll: 15, suv: 165 },
+      'den-castlerock': { sedan: 155, toll: 15, suv: 195 },
+      'den-arvada': { sedan: 125, suv: 150 },
+      'den-broomfield': { sedan: 135, toll: 15, suv: 155 },
+      'den-coloradosprings': { sedan: 225, toll: 15, suv: 275 }
+    }
+
+    const key1 = pickup.toLowerCase().split(' ').join('') + '-' + dropOff.toLowerCase().split(' ').join('');
+    const key2 = dropOff.toLowerCase().split(' ').join('') + '-' + pickup.toLowerCase().split(' ').join('');
+
+    if (priceMap[key1] || priceMap[key2]) {
+      let price = 0;
+      if (!vehicleType) {
+        return `Please select Vehicle type to get the price`;
+      }
+
+      if (priceMap[key1]) {
+        const shouldAddToll = priceMap[key1].toll;
+
+        if (shouldAddToll) {
+          price = priceMap[key1][vehicleType] + priceMap[key1].toll;
+        } else {
+          price = priceMap[key1][vehicleType]
+        }
+
+      } else {
+        const shouldAddToll = priceMap[key2].toll;
+        if (shouldAddToll) {
+          price = priceMap[key2][vehicleType] + priceMap[key2].toll;
+        } else {
+          price = priceMap[key2][vehicleType]
+        }
+      }
+
+      if(this.isRoundTrip){
+        return price*2
+      }else{
+        return price
+      }
+    } else {
+        return `Route from '${pickup}' to '${dropOff}' not found.`;
+      }
   }
 
   // Helper function to normalize route keys

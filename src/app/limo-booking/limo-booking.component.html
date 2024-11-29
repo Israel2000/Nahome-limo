@@ -231,6 +231,7 @@
         name="roundTrip"
         class="form-check-input"
         [(ngModel)]="isRoundTrip"
+        (change)="calculatePrice()"
       />
       <label for="roundTrip" class="form-check-label">Round Trip</label>
     </div>
