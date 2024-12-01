@@ -26,14 +26,42 @@ export class ContactPageComponent {
 
   async send() {
     emailjs.init('6By1enMFeieSwMnOW');
-    let response = await emailjs.send("service_2351vj5", "template_qrwqide", {
-      from_name: this.form.value.from_name,
-      to_name: this.form.value.to_name,
-      from_email: this.form.value.from_email,
-      message: this.form.value.from_message,
-    });
-
-    alert('Message has been sent.');
-    this.form.reset()
+  
+    try {
+      // Show the overlay message
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '50%';
+      overlay.style.left = '50%';
+      overlay.style.transform = 'translate(-50%, -50%)';
+      overlay.style.backgroundColor = '#00000088'; // Semi-transparent black
+      overlay.style.color = 'white';
+      overlay.style.padding = '20px';
+      overlay.style.borderRadius = '10px';
+      overlay.style.zIndex = '1000';
+      overlay.innerHTML = 'Sending message...';
+      document.body.appendChild(overlay);
+  
+      // Send the email
+      let response = await emailjs.send("service_2351vj5", "template_qrwqide", {
+        from_name: this.form.value.from_name,
+        to_name: this.form.value.to_name,
+        from_email: this.form.value.from_email,
+        message: this.form.value.from_message,
+      });
+  
+      // Update the overlay message
+      overlay.innerHTML = 'Message has been sent!';
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds
+  
+      // Remove the overlay
+      document.body.removeChild(overlay);
+  
+      // Reset the form
+      this.form.reset();
+    } catch (error) {
+      alert('Failed to send the message. Please try again.');
+    }
   }
+  
 }
